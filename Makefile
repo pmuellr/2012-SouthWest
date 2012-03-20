@@ -7,7 +7,16 @@ GLYPHISH = ~/Projects/GlyphishPro
 
 #-------------------------------------------------------------------------------
 build:
-	@echo TBD
+	@echo updating weather
+	@tools/update-weather.sh
+
+	@echo updating manifest
+	@tools/update-manifest.sh
+
+#-------------------------------------------------------------------------------
+deploy:
+	@echo deploying to muellerware.org/travel/2012-SouthWest
+	@rsync -av . muellerware.org:web/public/travel/2012-SouthWest
 
 #-------------------------------------------------------------------------------
 vendor: vendor-init vendor-jquery vendor-glyphish
