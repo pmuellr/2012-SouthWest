@@ -1,0 +1,11 @@
+#!/bin/sh
+
+#--------------------------
+# make the git repo accessible via:
+#   git clone http://{host-name}/~pmuellr/git-repos/{project-name}/.git
+#--------------------------
+
+cd `dirname $0`
+
+git update-server-info
+rsync -av . muellerware.org:git-repos/2012-SouthWest

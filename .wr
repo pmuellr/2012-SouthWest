@@ -1,0 +1,11 @@
+--stdoutcolor blue
+--stderrcolor red
+
+make
+
+images
+vendor
+
+index.html
+main.css
+Makefile
