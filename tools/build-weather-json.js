@@ -17,6 +17,7 @@ for (var i=0; i<entries.length; i++) {
     var contents = fs.readFileSync(path.join(dir, entry), 'utf8')
     
     contents = contents.replace(/<a.*?>(.|\s)*?<\/a>/g,'')
+    contents = contents.replace(/<form.*?>(.|\s)*?<\/form>/g,'')
     
     object[entry] = contents
 }
