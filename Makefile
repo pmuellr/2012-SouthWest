@@ -8,11 +8,13 @@ GLYPHISH = ~/Projects/GlyphishPro
 
 #-------------------------------------------------------------------------------
 build:
-	@echo updating weather
-	@tools/update-weather.sh
+#	@echo updating weather
+#	@tools/update-weather.sh
 
-	@echo building weather json
-	@tools/build-weather-json.js
+#	@echo building weather json
+#	@tools/build-weather-json.js
+
+	@coffee --bare --compile --output scripts scripts-src/main.coffee
 
 	@echo updating manifest
 	@tools/update-manifest.sh

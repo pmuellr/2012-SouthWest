@@ -3,9 +3,8 @@
 
 make
 
-images
-vendor
-
 index.html
-main.css
+images
+css
+scripts-src
 Makefile

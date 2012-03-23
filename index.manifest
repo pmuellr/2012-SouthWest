@@ -4,6 +4,7 @@ index.html
 
 css/main.css
 
+scripts/main.js
 scripts/weather.js
 scripts/zips.js
 
@@ -42,4 +43,4 @@ vendor/jquery-mobile/jquery.mobile.min.css
 vendor/jquery-mobile/jquery.mobile.min.js
 vendor/jquery-mobile/jquery.mobile.structure.min.css
 
-# updated: Fri Mar 23 00:49:48 EDT 2012
+# updated: Fri Mar 23 02:10:07 EDT 2012
