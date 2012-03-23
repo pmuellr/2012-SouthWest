@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "updating index.manifest"
+
 cd `dirname $0`/..
 
 chmod +w index.manifest
