@@ -2,7 +2,8 @@
 
 .PHONY: build vendor icons
 
-JQUERY   = 1.0.1
+JQUERY   = 1.7.1
+JQUERYM  = 1.0.1
 GLYPHISH = ~/Projects/GlyphishPro
 
 #-------------------------------------------------------------------------------
@@ -43,14 +44,16 @@ vendor-jquery:
 	@mkdir vendor/jquery-mobile
 	@mkdir vendor/jquery-mobile/images
 
-#	@curl --progress-bar -o tmp/jquery-mobile.zip http://code.jquery.com/mobile/$(JQUERY)/jquery.mobile-$(JQUERY).zip
-	@curl -s -o tmp/jquery-mobile.zip http://code.jquery.com/mobile/$(JQUERY)/jquery.mobile-$(JQUERY).zip
+	@curl -s -o tmp/jquery-mobile.zip http://code.jquery.com/mobile/$(JQUERYM)/jquery.mobile-$(JQUERYM).zip
 	@unzip -qq tmp/jquery-mobile.zip -d tmp
 
-	@mv tmp/jquery.mobile-$(JQUERY) tmp/jquery-mobile
-	@mv tmp/jquery-mobile/images/* vendor/jquery-mobile/images
-	@mv tmp/jquery-mobile/*.min.css vendor/jquery-mobile
-	@mv tmp/jquery-mobile/*.min.js  vendor/jquery-mobile
+	@mv tmp/jquery.mobile-$(JQUERYM) tmp/jquery-mobile
+	@mv tmp/jquery-mobile/images/*                                  vendor/jquery-mobile/images
+	@mv tmp/jquery-mobile/jquery.mobile.structure-$(JQUERYM).min.css vendor/jquery-mobile/jquery.mobile.structure.min.css
+	@mv tmp/jquery-mobile/jquery.mobile-$(JQUERYM).min.css           vendor/jquery-mobile/jquery.mobile.min.css
+	@mv tmp/jquery-mobile/jquery.mobile-$(JQUERYM).min.js            vendor/jquery-mobile/jquery.mobile.min.js
+	
+	@curl -s -o vendor/jquery-mobile/jquery.min.js http://code.jquery.com/jquery-$(JQUERY).min.js
 
 #-------------------------------------------------------------------------------
 CopyIconG1x = cp $(GLYPHISH)/$(1)/$(1)-gray/$(2).png     vendor/glyphish/g/$(1)/$(2)-1x.png

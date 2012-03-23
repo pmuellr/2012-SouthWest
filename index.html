@@ -1,18 +1,329 @@
 <!DOCTYPE HTML>
 <html>
 
+<!-- ======================================================================= -->
 <head>
-<title>2012 SouthWest</title>
-<link rel="stylesheet" href="main.css" type="text/css"/>
+<title>2012 SW</title>
+
 <link rel="shortcut icon"                                href="images/icon-032x032.png" />
 <link rel="apple-touch-icon-precomposed"                 href="images/icon-057x057.png" />
 <link rel="apple-touch-icon-precomposed" sizes="72x72"   href="images/icon-072x072.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/icon-114x114.png" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/icon-144x144.png" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+<link rel="stylesheet" href="vendor/jquery-mobile/jquery.mobile.min.css"/>
+<link rel="stylesheet" href="vendor/jquery-mobile/jquery.mobile.structure.min.css"/>
+<link rel="stylesheet" href="css/main.css"/>
+
+<script src="vendor/jquery-mobile/jquery.min.js"></script>
+<script src="vendor/jquery-mobile/jquery.mobile.min.js"></script>
+
+<script src="scripts/zips.js"></script>
+<script src="scripts/weather.js"></script>
+<script src="scripts/main.js"></script>
 </head>
 
+<!-- ======================================================================= -->
 <body>
-TBD
-</body>
 
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div data-role="page" id="page-main">
+    <div data-role="header">
+		<h1>2012 southwest</h1>
+	</div>
+	
+	<div data-role="content">	
+        <ul data-role="listview" data-theme="c">	
+            <li><a href="#page-itinerary"> itinerary    </a>
+            <li><a href="#page-weather">   weather      </a>
+            <li><a href="#page-maps">      maps         </a>
+            <li><a href="#page-reserve">   reservations </a>
+            <li><a href="#page-log">       log          </a>
+        </ul>
+	</div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div data-role="page" id="page-itinerary">
+    <div data-role="header">
+        <a href="#page-main" data-icon="back" data-direction="reverse">home</a>
+		<h1>itinerary</h1>
+	</div>
+	
+	<div data-role="content">	
+	    <ul data-role="listview" data-theme="c">
+	    
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	        <li data-role="list-divider" id="2012-03-31">03/31 - Saturday
+	        
+	        <li>06:05 Southwest 1052 RDU -> Denver
+            <li>08:00 Southwset 1412 Denver -> Las Vegas
+            <li>11:45 Arrive Las Vegas
+            
+            <li>Drive to Zion Park, 3hr
+            
+            <li>Stay at Driftwood Lodge
+            
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	        <li data-role="list-divider" id="2012-04-01">04/01 - Sunday
+
+            <li>Stay at Driftwood Lodge
+	        
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	        <li data-role="list-divider" id="2012-04-02">04/02 - Monday
+
+            <li>Drive to Bryce Canyon, 3hr
+            
+            <li>Stay at Bryce Canyon Grand Hotel
+	        
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	        <li data-role="list-divider" id="2012-04-03">04/03 - Tuesday
+	        
+            <li>Drive to Page, 3hr
+            
+            <li>Stay at Days Inn
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	        <li data-role="list-divider" id="2012-04-04">04/04 - Wednesday
+	        
+            <li>Stay at Days Inn
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	        <li data-role="list-divider" id="2012-04-05">04/05 - Thursday
+	        
+            <li>Drive to Grand Canyon, 3hr
+            
+            <li>Stay at Yavapai Lodge
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	        <li data-role="list-divider" id="2012-04-06">04/06 - Friday
+
+            <li>Drive to Las Vegas 5hr
+            
+            <li>Stay at Mirage.
+	        
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	        <li data-role="list-divider" id="2012-04-07">04/07 - Saturday
+
+            <li>09:20 Southwest 1989 Last Vegas -> RDU
+            <li>stop in Orlando, FL
+            <li>19:00 Arrive RDU
+	        
+	    </ul>
+
+	</div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div data-role="page" id="page-weather">
+    <div data-role="header">
+        <a href="#page-main" data-icon="back" data-direction="reverse">home</a>
+		<h1>weather</h1>
+	</div>
+	
+	<div data-role="content">	
+        <ul data-role="listview" data-theme="c">	
+            <li><a href="#page-weather-zion">  zion national park  </a>
+            <li><a href="#page-weather-bryce"> bryce canyon        </a>
+            <li><a href="#page-weather-page">  page                </a>
+            <li><a href="#page-weather-grand"> grand canyon        </a>
+            <li><a href="#page-weather-vegas"> las vegas           </a>
+        </ul>
+	</div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div data-role="page" id="page-maps">
+    <div data-role="header">
+        <a href="#page-main" data-icon="back" data-direction="reverse">home</a>
+		<h1>maps</h1>
+	</div>
+	
+	<div data-role="content">	
+        <ul data-role="listview" data-theme="c">	
+            <li><a href="#page-map-all">   the works           </a>
+            <li><a href="#page-map-zion">  zion national park  </a>
+            <li><a href="#page-map-bryce"> bryce canyon        </a>
+            <li><a href="#page-map-page">  page                </a>
+            <li><a href="#page-map-grand"> grand canyon        </a>
+            <li><a href="#page-map-vegas"> las vegas           </a>
+        </ul>
+	</div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div data-role="page" id="page-reserve">
+    <div data-role="header">
+        <a href="#page-main" data-icon="back" data-direction="reverse">home</a>
+		<h1>reservations</h1>
+	</div>
+	
+	<div data-role="content">	
+		<p>TBD
+	</div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div data-role="page" id="page-log">
+    <div data-role="header">
+        <a href="#page-main" data-icon="back" data-direction="reverse">home</a>
+		<h1>log</h1>
+	</div>
+	
+	<div data-role="content">	
+		<button id="log-clear">clear</button>
+	</div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div data-role="page" id="page-map-all">
+    <div data-role="header">
+        <a href="#page-maps" data-icon="back" data-direction="reverse">maps</a>
+		<h1>the works</h1>
+	</div>
+	
+	<div data-role="content">	
+	    TBD
+	</div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div data-role="page" id="page-map-zion">
+    <div data-role="header">
+        <a href="#page-maps" data-icon="back" data-direction="reverse">maps</a>
+		<h1>zion park</h1>
+	</div>
+	
+	<div data-role="content">	
+	    TBD
+	</div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div data-role="page" id="page-map-bryce">
+    <div data-role="header">
+        <a href="#page-maps" data-icon="back" data-direction="reverse">maps</a>
+		<h1>bryce canyon</h1>
+	</div>
+	
+	<div data-role="content">	
+	    TBD
+	</div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div data-role="page" id="page-map-page">
+    <div data-role="header">
+        <a href="#page-maps" data-icon="back" data-direction="reverse">maps</a>
+		<h1>page</h1>
+	</div>
+	
+	<div data-role="content">	
+	    TBD
+	</div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div data-role="page" id="page-map-grand">
+    <div data-role="header">
+        <a href="#page-maps" data-icon="back" data-direction="reverse">maps</a>
+		<h1>grand canyon</h1>
+	</div>
+	
+	<div data-role="content">	
+	    TBD
+	</div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div data-role="page" id="page-map-vegas">
+    <div data-role="header">
+        <a href="#page-maps" data-icon="back" data-direction="reverse">maps</a>
+		<h1>las vegas</h1>
+	</div>
+	
+	<div data-role="content">	
+	    TBD
+	</div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div data-role="page" id="page-weather-zion">
+    <div data-role="header">
+        <a href="#page-weather" data-icon="back" data-direction="reverse">weather</a>
+		<h1>zion park</h1>
+	</div>
+	
+	<div data-role="content">
+	    <div id="weather-forecast-84767"></div>
+	    <p><img src="weather/84767-00.png" width="100%">
+	    <p><img src="weather/84767-48.png" width="100%">
+	    <div id="weather-discuss-84767"></div>
+	</div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div data-role="page" id="page-weather-bryce">
+    <div data-role="header">
+        <a href="#page-weather" data-icon="back" data-direction="reverse">weather</a>
+		<h1>bryce canyon</h1>
+	</div>
+	
+	<div data-role="content">	
+	    <div id="weather-forecast-84764"></div>
+	    <p><img src="weather/84764-00.png" width="100%">
+	    <p><img src="weather/84764-48.png" width="100%">
+	    <div id="weather-discuss-84764"></div>
+	</div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div data-role="page" id="page-weather-page">
+    <div data-role="header">
+        <a href="#page-weather" data-icon="back" data-direction="reverse">weather</a>
+		<h1>page</h1>
+	</div>
+	
+	<div data-role="content">	
+	    <div id="weather-forecast-86040"></div>
+	    <p><img src="weather/86040-00.png" width="100%">
+	    <p><img src="weather/86040-48.png" width="100%">
+	    <div id="weather-discuss-86040"></div>
+	</div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div data-role="page" id="page-weather-grand">
+    <div data-role="header">
+        <a href="#page-weather" data-icon="back" data-direction="reverse">weather</a>
+		<h1>grand canyon</h1>
+	</div>
+	
+	<div data-role="content">	
+	    <div id="weather-forecast-86023"></div>
+	    <p><img src="weather/86023-00.png" width="100%">
+	    <p><img src="weather/86023-48.png" width="100%">
+	    <div id="weather-discuss-86023"></div>
+	</div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div data-role="page" id="page-weather-vegas">
+    <div data-role="header">
+        <a href="#page-maps" data-icon="back" data-direction="reverse">weather</a>
+		<h1>las vegas</h1>
+	</div>
+	
+	<div data-role="content">	
+	    <div id="weather-forecast-89109"></div>
+	    <p><img src="weather/89109-00.png" width="100%">
+	    <p><img src="weather/89109-48.png" width="100%">
+	    <div id="weather-discuss-89109"></div>
+	</div>
+</div>
+
+<!-- ======================================================================= -->
+</body>
 </html>

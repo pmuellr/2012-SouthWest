@@ -21,7 +21,8 @@ for (var i=0; i<entries.length; i++) {
     object[entry] = contents
 }
 
-var oFile    = path.join(dir, 'weather.json')
+var oFile    = path.join(__dirname, '..', 'scripts', 'weather.js')
 var contents = JSON.stringify(object, null, 4)
 
+contents = "Weather = " + contents
 fs.writeFileSync(oFile, contents, 'utf8')
