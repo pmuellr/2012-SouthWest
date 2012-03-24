@@ -4,7 +4,7 @@ cd `dirname $0`
 
 PATH=$PATH:/usr/local/bin ./update-weather.sh
 
-./build-weather-json.js
+PATH=$PATH:/usr/local/bin ./build-weather-json.js
 
 rm ../weather/*.html
 

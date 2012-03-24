@@ -10,8 +10,8 @@ echo "getting weather data"
 #-------------------------------------------------------------------------------
 echo "   for Zion National Park"
 
-curl -o 84767-00.png -s "http://forecast.weather.gov/wtf/meteograms/Plotter.php?lat=37.32680&lon=-112.91780&wfo=SLC&zcode=UTZ518&gset=30&gdiff=10&unit=0&tinfo=MY7&ahour=00&pcmd=110111111111100000000000000000000000000000000000000000000&lg=en&indu=1!1!1&dd=0&bw=0&hrspan=48&pqpfhr=6&psnwhr=6" 
-curl -o 84767-48.png -s "http://forecast.weather.gov/wtf/meteograms/Plotter.php?lat=37.32680&lon=-112.91780&wfo=SLC&zcode=UTZ518&gset=30&gdiff=10&unit=0&tinfo=MY7&ahour=48&pcmd=110111111111100000000000000000000000000000000000000000000&lg=en&indu=1!1!1&dd=0&bw=0&hrspan=48&pqpfhr=6&psnwhr=6"
+curl -o 84767-00.png -s "http://forecast.weather.gov/wtf/meteograms/Plotter.php?lat=37.20857&lon=-112.98213&wfo=SLC&zcode=UTZ019&gset=30&gdiff=10&unit=0&tinfo=MY7&ahour=0&pcmd=110111111111100000000000000000000000000000000000000000000&lg=en&indu=1!1!1&dd=0&bw=0&hrspan=48&pqpfhr=6&psnwhr=6" 
+curl -o 84767-48.png -s "http://forecast.weather.gov/wtf/meteograms/Plotter.php?lat=37.20857&lon=-112.98213&wfo=SLC&zcode=UTZ019&gset=30&gdiff=10&unit=0&tinfo=MY7&ahour=48&pcmd=110111111111100000000000000000000000000000000000000000000&lg=en&indu=1!1!1&dd=0&bw=0&hrspan=48&pqpfhr=6&psnwhr=6"
 
 curl -s "http://mobile.weather.gov/port_mp_ns.php?select=1&CityName=Springdale&site=SLC&State=UT&warnzone=UTZ019" \
     | sed 's_<html>__' \
@@ -35,7 +35,7 @@ echo "   for Bryce Canyon"
 curl -o 84764-00.png -s "http://forecast.weather.gov/wtf/meteograms/Plotter.php?lat=37.62153&lon=-112.15494&wfo=SLC&zcode=UTZ518&gset=30&gdiff=10&unit=0&tinfo=MY7&ahour=00&pcmd=110111111111100000000000000000000000000000000000000000000&lg=en&indu=1!1!1&dd=0&bw=0&hrspan=48&pqpfhr=6&psnwhr=6" 
 curl -o 84764-48.png -s "http://forecast.weather.gov/wtf/meteograms/Plotter.php?lat=37.62153&lon=-112.15494&wfo=SLC&zcode=UTZ518&gset=30&gdiff=10&unit=0&tinfo=MY7&ahour=48&pcmd=110111111111100000000000000000000000000000000000000000000&lg=en&indu=1!1!1&dd=0&bw=0&hrspan=48&pqpfhr=6&psnwhr=6"
 
-curl -s "http://mobile.weather.gov/port_mp_ns.php?select=1&CityName=Bryce&site=SLC&State=UT&warnzone=UTZ017" \
+curl -s "http://mobile.weather.gov/port_mp_ns.php?select=1&CityName=Cannonville&site=SLC&State=UT&warnzone=UTZ020" \
     | sed 's_<html>__' \
     | sed 's_<body>__' \
     | sed 's_</html>__' \
