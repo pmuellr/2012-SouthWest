@@ -5,3 +5,10 @@ Zips = {
     86023: {name: "Grand Canyon",       geo: "36.0544,-112.1459" },
     89109: {name: "Las Vegas",          geo: "36.1212,-115.1754" },
 }
+
+// Driftwood Lodge:    37.17992, -113.00617
+// Bryce Canyon Grand: 37.67497, -112.15052
+// Days Inn:           36.90260, -111.48364
+// Yavapai Lodge:      36.05408, -112.11952
+// Mirage:             36.12112, -115.17432
+

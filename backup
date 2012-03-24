@@ -8,4 +8,4 @@
 cd `dirname $0`
 
 git update-server-info
-rsync -av . muellerware.org:git-repos/2012-SouthWest
+rsync -av --exclude /weather --exclude /maps . muellerware.org:git-repos/2012-SouthWest
