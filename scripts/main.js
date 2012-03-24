@@ -18,8 +18,7 @@ $(document).ready(function() {
 });
 
 $("#page-log").live("pageinit", function() {
-  setupLog();
-  return LogAdd("starting!");
+  return setupLog();
 });
 
 setupAppCache = function() {

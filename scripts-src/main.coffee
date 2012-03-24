@@ -13,9 +13,8 @@ $(document).ready ->
     
     $.mobile.defaultPageTransition = "none"
 
-$("#page-log").live "pageinit", -> 
+$("#page-log").live "pageinit", ->
     setupLog()
-    LogAdd "starting!"
 
 #-------------------------------------------------------------------------------
 setupAppCache = ->    
