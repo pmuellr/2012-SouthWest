@@ -22,7 +22,7 @@ echo ""                  >> index.manifest
 find images    -type f   >> index.manifest
 echo ""                  >> index.manifest
 
-find weather   -type f   >> index.manifest
+find weather   -type f  | grep png >> index.manifest
 echo ""                  >> index.manifest
 
 find vendor    -type f   >> index.manifest
