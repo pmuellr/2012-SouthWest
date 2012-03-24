@@ -1,29 +1,58 @@
-var Log, LogList, loadWeather, logAdd, logClear, setupAppCache, setupLog, setupMaps;
+var Log, LogList, appCacheDownloading, appCacheError, appCacheObsolete, appCacheUpdateReady, loadWeather, logAdd, logClear, setupAppCache, setupLog, setupMaps;
 
 Log = [];
 
 LogList = null;
 
+window.LogAdd = function(message) {
+  return setTimeout((function() {
+    return window.LogAdd(message);
+  }), 1000);
+};
+
 $(document).ready(function() {
   loadWeather();
   setupMaps();
-  setupLog();
   setupAppCache();
+  return $.mobile.defaultPageTransition = "none";
+});
+
+$("#page-log").live("pageinit", function() {
+  setupLog();
   return LogAdd("starting!");
 });
 
 setupAppCache = function() {
   if (!window.applicationCache) return;
-  return applicationCache.addEventListener("updateready", appCacheUpdateReady, false);
+  applicationCache.addEventListener("updateready", appCacheUpdateReady, false);
+  applicationCache.addEventListener("downloading", appCacheDownloading, false);
+  applicationCache.addEventListener("error", appCacheError, false);
+  applicationCache.addEventListener("obsolete", appCacheObsolete, false);
+  try {
+    return applicationCache.update();
+  } catch (e) {
+    if (window.LogAdd) return LogAdd("error updating cache");
+  }
 };
 
-appCacheUpdateReady(function() {
-  if (applicationCache.status === applicationCache.UPDATEREADY) {
-    applicationCache.swapCache();
-    alert('The weather has been updated!');
-    return location.reload();
-  }
-});
+appCacheUpdateReady = function() {
+  applicationCache.swapCache();
+  LogAdd("appcache updated");
+  alert('The weather has been updated!');
+  return location.reload();
+};
+
+appCacheDownloading = function() {
+  return LogAdd("appcache downloading");
+};
+
+appCacheError = function() {
+  return LogAdd("appcache error");
+};
+
+appCacheObsolete = function() {
+  return LogAdd("appcache obsolete");
+};
 
 setupLog = function() {
   var entry, logJson, _i, _len;
@@ -34,7 +63,8 @@ setupLog = function() {
   Log = [];
   LogList = $("#log-list");
   if (!window.localStorage) return;
-  logJson = localStorage.Log || "[]";
+  logJson = localStorage.getItem("Log");
+  logJson = logJson || "[]";
   Log = JSON.parse(logJson);
   for (_i = 0, _len = Log.length; _i < _len; _i++) {
     entry = Log[_i];
@@ -45,6 +75,7 @@ setupLog = function() {
 
 logAdd = function(message) {
   var entry1, entry2;
+  if (!window.LogAdd) return;
   entry1 = "" + (new Date()) + ":";
   entry2 = "" + message;
   Log.unshift(entry2);
@@ -53,14 +84,15 @@ logAdd = function(message) {
   LogList.prepend("<li>" + entry1);
   LogList.listview('refresh');
   if (!window.localStorage) return;
-  return localStorage.Log = JSON.stringify(Log, null, 2);
+  return localStorage.setItem("Log", JSON.stringify(Log, null, 2));
 };
 
 logClear = function() {
+  if (!window.LogAdd) return;
   Log = [];
   LogList.html("");
   if (!window.localStorage) return;
-  return localStorage.Log = "[]";
+  return localStorage.setItem("Log", "[]");
 };
 
 loadWeather = function() {

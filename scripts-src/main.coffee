@@ -2,12 +2,19 @@ Log     = []
 LogList = null
 
 #-------------------------------------------------------------------------------
+window.LogAdd = (message) ->
+    setTimeout (-> window.LogAdd(message)), 1000
+
+#-------------------------------------------------------------------------------
 $(document).ready ->
     loadWeather()
     setupMaps()
-    setupLog()
     setupAppCache()
     
+    $.mobile.defaultPageTransition = "none"
+
+$("#page-log").live "pageinit", -> 
+    setupLog()
     LogAdd "starting!"
 
 #-------------------------------------------------------------------------------
@@ -15,28 +22,50 @@ setupAppCache = ->
     return if !window.applicationCache
     
     applicationCache.addEventListener "updateready", appCacheUpdateReady, false
+    applicationCache.addEventListener "downloading", appCacheDownloading, false
+    applicationCache.addEventListener "error",       appCacheError, false
+    applicationCache.addEventListener "obsolete",    appCacheObsolete, false
+    
+    try 
+        applicationCache.update()
+    catch e
+        LogAdd "error updating cache" if window.LogAdd
     
 #-------------------------------------------------------------------------------
-appCacheUpdateReady ->
-   if applicationCache.status == applicationCache.UPDATEREADY
-       applicationCache.swapCache()
-       
-       alert 'The weather has been updated!'
-       location.reload()
+appCacheUpdateReady = ->
+    applicationCache.swapCache()
+
+    LogAdd "appcache updated"
+   
+    alert 'The weather has been updated!'
+    location.reload()
+    
+#-------------------------------------------------------------------------------
+appCacheDownloading = ->
+    LogAdd "appcache downloading"
+    
+#-------------------------------------------------------------------------------
+appCacheError = ->
+    LogAdd "appcache error"
+    
+#-------------------------------------------------------------------------------
+appCacheObsolete = ->
+    LogAdd "appcache obsolete"
 
 #-------------------------------------------------------------------------------
 setupLog = ->    
 
     $("#log-clear").click -> logClear()
     
-    window.LogAdd   = logAdd
+    window.LogAdd = logAdd
     
     Log     = []
     LogList = $("#log-list")
     
     return if !window.localStorage
     
-    logJson = localStorage.Log || "[]"
+    logJson = localStorage.getItem "Log"
+    logJson = logJson || "[]"
     
     Log = JSON.parse logJson
     
@@ -48,6 +77,8 @@ setupLog = ->
 #-------------------------------------------------------------------------------
 logAdd = (message) ->
     # new Date()
+    
+    return if !window.LogAdd
     
     entry1 = "#{new Date()}:"
     entry2 = "#{message}"
@@ -61,17 +92,19 @@ logAdd = (message) ->
 
     return if !window.localStorage
     
-    localStorage.Log = JSON.stringify(Log, null, 2)
+    localStorage.setItem "Log", JSON.stringify(Log, null, 2)
 
 #-------------------------------------------------------------------------------
 logClear = ->
+
+    return if !window.LogAdd
 
     Log = []
     LogList.html ""
 
     return if !window.localStorage
 
-    localStorage.Log = "[]"
+    localStorage.setItem "Log", "[]"
     
 #-------------------------------------------------------------------------------
 loadWeather = ->    
