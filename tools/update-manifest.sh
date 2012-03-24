@@ -28,6 +28,9 @@ echo ""                  >> index.manifest
 find vendor    -type f   >> index.manifest
 echo ""                  >> index.manifest
 
+find maps      -type f   >> index.manifest
+echo ""                  >> index.manifest
+
 echo "# updated: `date`" >> index.manifest
 
 chmod -w index.manifest

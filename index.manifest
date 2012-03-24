@@ -43,4 +43,17 @@ vendor/jquery-mobile/jquery.mobile.min.css
 vendor/jquery-mobile/jquery.mobile.min.js
 vendor/jquery-mobile/jquery.mobile.structure.min.css
 
-# updated: Sat Mar 24 06:57:59 EDT 2012
+maps/all-r.png
+maps/all-t.png
+maps/bryce-r.png
+maps/bryce-t.png
+maps/grand-r.png
+maps/grand-t.png
+maps/page-r.png
+maps/page-t.png
+maps/vegas-r.png
+maps/vegas-t.png
+maps/zion-r.png
+maps/zion-t.png
+
+# updated: Sat Mar 24 07:58:29 EDT 2012

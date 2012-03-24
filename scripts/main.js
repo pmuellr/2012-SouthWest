@@ -1,11 +1,12 @@
-var loadWeather, onLoad;
+var loadWeather, onLoad, setupMaps;
 
 $(document).ready(function() {
   return onLoad();
 });
 
 onLoad = function() {
-  return loadWeather();
+  loadWeather();
+  return setupMaps();
 };
 
 loadWeather = function() {
@@ -24,4 +25,20 @@ loadWeather = function() {
     }
   }
   return _results;
+};
+
+setupMaps = function() {
+  return $(".toggle-map").click(function() {
+    var img, match, nSrc, oSrc;
+    img = this;
+    oSrc = img.src;
+    match = oSrc.match(/(.*?)-(.)\.png/);
+    if (!match) return;
+    if (match[2] === 'r') {
+      nSrc = "" + match[1] + "-t.png";
+    } else {
+      nSrc = "" + match[1] + "-r.png";
+    }
+    return img.src = nSrc;
+  });
 };
