@@ -1,12 +1,66 @@
-var loadWeather, onLoad, setupMaps;
+var Log, LogList, loadWeather, logAdd, logClear, setupAppCache, setupLog, setupMaps;
+
+Log = [];
+
+LogList = null;
 
 $(document).ready(function() {
-  return onLoad();
+  loadWeather();
+  setupMaps();
+  setupLog();
+  setupAppCache();
+  return LogAdd("starting!");
 });
 
-onLoad = function() {
-  loadWeather();
-  return setupMaps();
+setupAppCache = function() {
+  if (!window.applicationCache) return;
+  return applicationCache.addEventListener("updateready", appCacheUpdateReady, false);
+};
+
+appCacheUpdateReady(function() {
+  if (applicationCache.status === applicationCache.UPDATEREADY) {
+    applicationCache.swapCache();
+    alert('The weather has been updated!');
+    return location.reload();
+  }
+});
+
+setupLog = function() {
+  var entry, logJson, _i, _len;
+  $("#log-clear").click(function() {
+    return logClear();
+  });
+  window.LogAdd = logAdd;
+  Log = [];
+  LogList = $("#log-list");
+  if (!window.localStorage) return;
+  logJson = localStorage.Log || "[]";
+  Log = JSON.parse(logJson);
+  for (_i = 0, _len = Log.length; _i < _len; _i++) {
+    entry = Log[_i];
+    LogList.append("<li>" + entry);
+  }
+  return LogList.listview('refresh');
+};
+
+logAdd = function(message) {
+  var entry1, entry2;
+  entry1 = "" + (new Date()) + ":";
+  entry2 = "" + message;
+  Log.unshift(entry2);
+  Log.unshift(entry1);
+  LogList.prepend("<li>" + entry2);
+  LogList.prepend("<li>" + entry1);
+  LogList.listview('refresh');
+  if (!window.localStorage) return;
+  return localStorage.Log = JSON.stringify(Log, null, 2);
+};
+
+logClear = function() {
+  Log = [];
+  LogList.html("");
+  if (!window.localStorage) return;
+  return localStorage.Log = "[]";
 };
 
 loadWeather = function() {

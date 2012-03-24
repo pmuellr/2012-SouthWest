@@ -13,11 +13,21 @@ var object = {}
 for (var i=0; i<entries.length; i++) {
     var entry = entries[i]
     if (!entry.match('\.html$')) continue
+    console.log("   " + entry)
     
     var contents = fs.readFileSync(path.join(dir, entry), 'utf8')
     
     contents = contents.replace(/<a.*?>(.|\s)*?<\/a>/g,'')
     contents = contents.replace(/<form.*?>(.|\s)*?<\/form>/g,'')
+    contents = contents.replace(/<title.*?>(.|\s)*?<\/title>/g,'')
+    contents = contents.replace(/<link.*?>/g,'')
+    contents = contents.replace(/<meta.*?>/g,'')
+    contents = contents.replace(/<html.*?>/,'')
+    contents = contents.replace(/<\/html>/,'')
+    contents = contents.replace(/<head>/,'')
+    contents = contents.replace(/<\/head>/,'')
+    contents = contents.replace(/<body.*?>/,'')
+    contents = contents.replace(/<\/body>/,'')
     
     object[entry] = contents
 }
