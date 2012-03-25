@@ -69,6 +69,8 @@ CopyIcons = $(call CopyIconG1x,$1,$2); $(call CopyIconG2x,$1,$2); $(call CopyIco
 vendor-glyphish:
 	@echo copying glyphish icons
 
+	@rm -rf vendor/glyphish
+	
 	@mkdir vendor/glyphish
 	@mkdir vendor/glyphish/g
 	@mkdir vendor/glyphish/w
@@ -79,5 +81,11 @@ vendor-glyphish:
 	@mkdir vendor/glyphish/w/mini
 	@mkdir vendor/glyphish/w/xtras
 
+	@$(call CopyIcons,icons,11-clock)
 	@$(call CopyIcons,icons,25-weather)
+	@$(call CopyIcons,icons,103-map)
+	@$(call CopyIcons,icons,40-inbox)
+	@$(call CopyIcons,icons,06-magnify)
+	@$(call CopyIcons,xtras,04-arrow-northeast)
 	@$(call CopyIcons,xtras,36-circle-west)
+
