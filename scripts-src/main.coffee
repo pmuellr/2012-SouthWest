@@ -35,9 +35,6 @@ appCacheUpdateReady = ->
     applicationCache.swapCache()
 
     LogAdd "appcache updated"
-   
-    alert 'The weather has been updated!'
-    location.reload()
     
 #-------------------------------------------------------------------------------
 appCacheDownloading = ->
@@ -54,7 +51,8 @@ appCacheObsolete = ->
 #-------------------------------------------------------------------------------
 setupLog = ->    
 
-    $("#log-clear").click -> logClear()
+    $("#log-clear").click  -> logClear()
+    $("#log-reload").click -> location.reload()
     
     window.LogAdd = logAdd
     

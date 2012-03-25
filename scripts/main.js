@@ -36,9 +36,7 @@ setupAppCache = function() {
 
 appCacheUpdateReady = function() {
   applicationCache.swapCache();
-  LogAdd("appcache updated");
-  alert('The weather has been updated!');
-  return location.reload();
+  return LogAdd("appcache updated");
 };
 
 appCacheDownloading = function() {
@@ -57,6 +55,9 @@ setupLog = function() {
   var entry, logJson, _i, _len;
   $("#log-clear").click(function() {
     return logClear();
+  });
+  $("#log-reload").click(function() {
+    return location.reload();
   });
   window.LogAdd = logAdd;
   Log = [];
