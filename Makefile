@@ -22,7 +22,8 @@ build:
 #-------------------------------------------------------------------------------
 deploy:
 	@echo deploying to muellerware.org/travel/2012-SouthWest
-	@rsync -av --exclude /weather --exclude /.git . muellerware.org:web/public/travel/2012-SouthWest
+	@rsync -av --exclude /weather --exclude /.git --exclude /scripts/weather.js \
+	    . muellerware.org:web/public/travel/2012-SouthWest
 
 #-------------------------------------------------------------------------------
 vendor: vendor-init vendor-jquery vendor-glyphish
